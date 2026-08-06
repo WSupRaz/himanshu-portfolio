@@ -184,6 +184,17 @@
     .section-divider { border-top: 1px solid rgba(255, 255, 255, 0.06); }
 
     /* ── Flagship project ── */
+    .flagship-list {
+      display: flex; flex-direction: column;
+      gap: 48px;
+    }
+    .flagship-name {
+      font-size: 1.375rem; font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fafafa;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
     .flagship-card {
       display: grid;
       grid-template-columns: 1.1fr 1fr;
@@ -485,46 +496,86 @@
   </div>
 </section>
 
-<!-- FLAGSHIP PROJECT -->
-<section id="flagship" class="section-divider" aria-label="Flagship project">
+<!-- FLAGSHIP PROJECTS -->
+<section id="flagship" class="section-divider" aria-label="Flagship projects">
   <div class="container">
-    <p class="section-label">Flagship project</p>
-    <h2>AdPilot India</h2>
-    <div class="flagship-card">
-      <div class="flagship-img-wrap">
-        <img
-          src="/adpilot-preview.png"
-          alt="AdPilot India dashboard screenshot"
-          class="flagship-img"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        >
-        <div class="flagship-img-placeholder" style="display:none;" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>adpilot-preview.png</span>
+    <p class="section-label">Flagship projects</p>
+    <h2>Flagship projects</h2>
+    <div class="flagship-list">
+
+      <div class="flagship-card">
+        <div class="flagship-img-wrap">
+          <img
+            src="/millos-preview.png"
+            alt="MillOS dashboard screenshot"
+            class="flagship-img"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="flagship-img-placeholder" style="display:none;" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>millos-preview.png</span>
+          </div>
+        </div>
+        <div class="flagship-desc">
+          <p class="flagship-name">MillOS</p>
+          <p class="flagship-project-subtitle">AI-Powered ERP for Flour Mills</p>
+          <p>AI-powered ERP for flour mills covering production, inventory, QC, dispatch, maintenance, audits, and compliance in English or Hindi. Enforces 23-role RBAC via Postgres Row-Level Security, runs on live Supabase CRUD with no mock data, and includes a tool-calling Claude AI assistant.</p>
+          <div class="stack-chips">
+            <span class="chip">React 19</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Vite</span>
+            <span class="chip">Tailwind CSS v4</span>
+            <span class="chip">shadcn/ui</span>
+            <span class="chip">TanStack Query</span>
+            <span class="chip">Zustand</span>
+            <span class="chip">Supabase</span>
+            <span class="chip">Claude API</span>
+          </div>
+          <div class="project-links">
+            <a href="https://millos-kappa.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-accent">Live app →</a>
+            <a href="https://github.com/WSupRaz/millos" target="_blank" rel="noopener noreferrer" class="btn-outline">View code →</a>
+          </div>
         </div>
       </div>
-      <div class="flagship-desc">
-        <p class="flagship-project-subtitle">AI Marketing SaaS for Indian SMBs</p>
-        <p>An AI marketing platform that generates complete Google &amp; Meta ad campaigns from a plain-language business description in Hindi, Hinglish, or English using GPT-4o. Built solo, live in production — async AI job queues, a 20+ table database, a credit system with automatic refunds, and an India Intelligence Engine that adapts campaigns for festivals and city tiers.</p>
-        <div class="stack-chips">
-          <span class="chip">Next.js 14</span>
-          <span class="chip">TypeScript</span>
-          <span class="chip">Express</span>
-          <span class="chip">Prisma</span>
-          <span class="chip">PostgreSQL</span>
-          <span class="chip">Redis</span>
-          <span class="chip">BullMQ</span>
-          <span class="chip">OpenAI GPT-4o</span>
-          <span class="chip">NextAuth.js</span>
-          <span class="chip">Tailwind</span>
-          <span class="chip">Vercel</span>
-          <span class="chip">Railway</span>
+
+      <div class="flagship-card">
+        <div class="flagship-img-wrap">
+          <img
+            src="/adpilot-preview.png"
+            alt="AdPilot India dashboard screenshot"
+            class="flagship-img"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="flagship-img-placeholder" style="display:none;" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>adpilot-preview.png</span>
+          </div>
         </div>
-        <div class="project-links">
-          <a href="https://adpilot-india.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-accent">Live app →</a>
-          <a href="https://github.com/WSupRaz/adpilot-india" target="_blank" rel="noopener noreferrer" class="btn-outline">View code →</a>
+        <div class="flagship-desc">
+          <p class="flagship-name">AdPilot India</p>
+          <p class="flagship-project-subtitle">AI Marketing SaaS for Indian SMBs</p>
+          <p>An AI marketing platform that generates complete Google &amp; Meta ad campaigns from a plain-language business description in Hindi, Hinglish, or English using GPT-4o. Built solo, live in production — async AI job queues, a 20+ table database, a credit system with automatic refunds, and an India Intelligence Engine that adapts campaigns for festivals and city tiers.</p>
+          <div class="stack-chips">
+            <span class="chip">Next.js 14</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Express</span>
+            <span class="chip">Prisma</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Redis</span>
+            <span class="chip">BullMQ</span>
+            <span class="chip">OpenAI GPT-4o</span>
+            <span class="chip">NextAuth.js</span>
+            <span class="chip">Tailwind</span>
+            <span class="chip">Vercel</span>
+            <span class="chip">Railway</span>
+          </div>
+          <div class="project-links">
+            <a href="https://adpilot-india.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-accent">Live app →</a>
+            <a href="https://github.com/WSupRaz/adpilot-india" target="_blank" rel="noopener noreferrer" class="btn-outline">View code →</a>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
