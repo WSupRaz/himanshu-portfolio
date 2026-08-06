@@ -293,6 +293,27 @@
       transition: border-color 0.2s;
     }
     .project-card:hover { border-color: rgba(255, 255, 255, 0.15); }
+    .card-img {
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%;
+      aspect-ratio: 16/10;
+      background: #1a1a1a;
+      object-fit: cover;
+      object-position: top center;
+      margin-bottom: 16px;
+    }
+    .card-img-placeholder {
+      border-radius: 6px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      width: 100%; aspect-ratio: 16/10;
+      background: #161616;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 8px;
+      color: #3f3f46; font-size: 0.75rem;
+      margin-bottom: 16px;
+    }
+    .card-img-placeholder svg { width: 22px; height: 22px; fill: currentColor; opacity: 0.4; }
     .card-tag {
       font-size: 0.6875rem; font-weight: 600;
       letter-spacing: 0.04em;
@@ -610,6 +631,16 @@
       </article>
 
       <article class="project-card">
+        <img
+          src="/viralcut-preview.png"
+          alt="ViralCut AI project screenshot"
+          class="card-img"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+        >
+        <div class="card-img-placeholder" style="display:none;" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+          <span>viralcut-preview.png</span>
+        </div>
         <p class="card-tag">AI Video SaaS · Next.js</p>
         <h3>ViralCut AI</h3>
         <p>AI video editing SaaS — upload footage, describe a style, get back an edited, captioned short. Claude plans the edit; FFmpeg, PySceneDetect, and Remotion render it. Monorepo: Next.js + Remotion worker, FastAPI service, Celery pipeline.</p>
