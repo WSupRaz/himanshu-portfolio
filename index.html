@@ -293,27 +293,6 @@
       transition: border-color 0.2s;
     }
     .project-card:hover { border-color: rgba(255, 255, 255, 0.15); }
-    .card-img {
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      width: 100%;
-      aspect-ratio: 16/10;
-      background: #1a1a1a;
-      object-fit: cover;
-      object-position: top center;
-      margin-bottom: 16px;
-    }
-    .card-img-placeholder {
-      border-radius: 6px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      width: 100%; aspect-ratio: 16/10;
-      background: #161616;
-      display: flex; align-items: center; justify-content: center;
-      flex-direction: column; gap: 8px;
-      color: #3f3f46; font-size: 0.75rem;
-      margin-bottom: 16px;
-    }
-    .card-img-placeholder svg { width: 22px; height: 22px; fill: currentColor; opacity: 0.4; }
     .card-tag {
       font-size: 0.6875rem; font-weight: 600;
       letter-spacing: 0.04em;
@@ -598,6 +577,40 @@
         </div>
       </div>
 
+      <div class="flagship-card">
+        <div class="flagship-img-wrap">
+          <img
+            src="/viralcut-preview.png"
+            alt="ViralCut AI project screenshot"
+            class="flagship-img"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="flagship-img-placeholder" style="display:none;" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <span>viralcut-preview.png</span>
+          </div>
+        </div>
+        <div class="flagship-desc">
+          <p class="flagship-name">ViralCut AI</p>
+          <p class="flagship-project-subtitle">AI Video Editing SaaS</p>
+          <p>AI video editing SaaS — upload footage, describe a style, get back an edited, captioned short. Claude plans the edit; FFmpeg, PySceneDetect, and Remotion render it. Monorepo: Next.js + Remotion worker, FastAPI service, Celery pipeline.</p>
+          <div class="stack-chips">
+            <span class="chip">Next.js</span>
+            <span class="chip">Remotion</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">Celery</span>
+            <span class="chip">FFmpeg</span>
+            <span class="chip">PySceneDetect</span>
+            <span class="chip">PostgreSQL</span>
+            <span class="chip">Redis</span>
+            <span class="chip">Claude API</span>
+          </div>
+          <div class="project-links">
+            <a href="https://github.com/WSupRaz/viralcut-ai" target="_blank" rel="noopener noreferrer" class="btn-outline">View code →</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -627,36 +640,6 @@
         <div class="card-links">
           <a href="https://millos-kappa.vercel.app" target="_blank" rel="noopener noreferrer" class="card-link">Live →</a>
           <a href="https://github.com/WSupRaz/millos" target="_blank" rel="noopener noreferrer" class="card-link">Code →</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img
-          src="/viralcut-preview.png"
-          alt="ViralCut AI project screenshot"
-          class="card-img"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
-        >
-        <div class="card-img-placeholder" style="display:none;" aria-hidden="true">
-          <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
-          <span>viralcut-preview.png</span>
-        </div>
-        <p class="card-tag">AI Video SaaS · Next.js</p>
-        <h3>ViralCut AI</h3>
-        <p>AI video editing SaaS — upload footage, describe a style, get back an edited, captioned short. Claude plans the edit; FFmpeg, PySceneDetect, and Remotion render it. Monorepo: Next.js + Remotion worker, FastAPI service, Celery pipeline.</p>
-        <div class="stack-chips">
-          <span class="chip">Next.js</span>
-          <span class="chip">Remotion</span>
-          <span class="chip">FastAPI</span>
-          <span class="chip">Celery</span>
-          <span class="chip">FFmpeg</span>
-          <span class="chip">PySceneDetect</span>
-          <span class="chip">PostgreSQL</span>
-          <span class="chip">Redis</span>
-          <span class="chip">Claude API</span>
-        </div>
-        <div class="card-links">
-          <a href="https://github.com/WSupRaz/viralcut-ai" target="_blank" rel="noopener noreferrer" class="card-link">Code →</a>
         </div>
       </article>
 
