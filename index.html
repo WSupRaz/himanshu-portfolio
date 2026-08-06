@@ -92,8 +92,34 @@
       min-height: 100vh;
       display: flex; align-items: center;
       padding: 140px 0 96px;
+      position: relative;
+      overflow: hidden;
     }
-    .hero-inner { max-width: 760px; }
+    .hero-glow {
+      position: absolute;
+      top: -25%; left: 50%;
+      width: 900px; max-width: 160%; aspect-ratio: 1/1;
+      transform: translateX(-50%);
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(59, 130, 246, 0.05) 40%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+      animation: heroGlowPulse 8s ease-in-out infinite;
+    }
+    @keyframes heroGlowPulse {
+      0%, 100% { opacity: 0.7; transform: translateX(-50%) scale(1); }
+      50% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+    }
+    .hero-inner { max-width: 760px; position: relative; z-index: 1; }
+    .hero-stats {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 6px 12px;
+      font-size: 0.875rem;
+      color: #52525b;
+      margin-bottom: 36px;
+    }
+    .hero-stats strong { color: #a1a1aa; font-weight: 600; }
+    .hero-stats .dot { color: #3f3f46; }
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 0.8125rem; font-weight: 500;
@@ -204,6 +230,12 @@
       border: 1px solid rgba(255, 255, 255, 0.07);
       border-radius: 12px;
       padding: 48px;
+      transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    }
+    .flagship-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px -12px rgba(59, 130, 246, 0.2);
     }
     .flagship-img-wrap {
       position: relative;
@@ -291,9 +323,13 @@
       border-radius: 10px;
       padding: 26px;
       display: flex; flex-direction: column;
-      transition: border-color 0.2s;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
     }
-    .project-card:hover { border-color: rgba(255, 255, 255, 0.15); }
+    .project-card:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px -10px rgba(59, 130, 246, 0.22);
+    }
     .card-tag {
       font-size: 0.6875rem; font-weight: 600;
       letter-spacing: 0.04em;
@@ -402,6 +438,30 @@
     .footer-socials a:hover { color: #71717a; }
     .footer-socials svg { width: 17px; height: 17px; fill: currentColor; }
 
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+    .reveal-fade {
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .reveal-fade.in-view { opacity: 1; }
+    .projects-grid .project-card:nth-child(2) { transition-delay: 0.08s; }
+    .projects-grid .project-card:nth-child(3) { transition-delay: 0.16s; }
+    .flagship-list .flagship-card:nth-child(2) { transition-delay: 0.1s; }
+    .flagship-list .flagship-card:nth-child(3) { transition-delay: 0.2s; }
+    .stack-grid > div:nth-child(2) { transition-delay: 0.08s; }
+    .stack-grid > div:nth-child(3) { transition-delay: 0.16s; }
+    .stack-grid > div:nth-child(4) { transition-delay: 0.24s; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal-fade { opacity: 1; transform: none; transition: none; }
+      .hero-glow { animation: none; }
+    }
+
     /* ── Responsive ── */
     @media (max-width: 1024px) {
       .flagship-card {
@@ -460,6 +520,7 @@
 
 <!-- HERO -->
 <section id="hero" aria-label="Introduction">
+  <div class="hero-glow" aria-hidden="true"></div>
   <div class="container">
     <div class="hero-inner">
       <div class="hero-badge" aria-label="Job availability">
@@ -472,6 +533,15 @@
         I build production AI SaaS — not demos. Recently shipped AdPilot India,
         an AI marketing platform for Indian SMBs, and BOS SaaS, an AI business operating system.
       </p>
+      <div class="hero-stats" aria-label="Highlights">
+        <span><strong>4</strong> shipped products</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>Solo-built &amp; deployed</span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span>AI response time <strong>~45s → ~4s</strong></span>
+        <span class="dot" aria-hidden="true">·</span>
+        <span><strong>23-role</strong> RBAC via Postgres RLS</span>
+      </div>
       <div class="hero-actions">
         <a href="https://adpilot-india.vercel.app" target="_blank" rel="noopener noreferrer" class="btn-primary">
           View AdPilot India →
@@ -503,7 +573,7 @@
     <h2>Flagship projects</h2>
     <div class="flagship-list">
 
-      <div class="flagship-card">
+      <div class="flagship-card reveal-fade">
         <div class="flagship-img-wrap">
           <img
             src="/adpilot-preview.png"
@@ -541,7 +611,7 @@
         </div>
       </div>
 
-      <div class="flagship-card">
+      <div class="flagship-card reveal-fade">
         <div class="flagship-img-wrap">
           <img
             src="/bos-saas-preview.png"
@@ -577,7 +647,7 @@
         </div>
       </div>
 
-      <div class="flagship-card">
+      <div class="flagship-card reveal-fade">
         <div class="flagship-img-wrap">
           <img
             src="/viralcut-preview.png"
@@ -623,7 +693,7 @@
     <h2>More work</h2>
     <div class="projects-grid">
 
-      <article class="project-card">
+      <article class="project-card reveal-fade">
         <p class="card-tag">AI ERP · React</p>
         <h3>MillOS</h3>
         <p>AI-powered ERP for flour mills covering production, inventory, QC, dispatch, maintenance, audits, and compliance in English or Hindi. Enforces 23-role RBAC via Postgres Row-Level Security, runs on live Supabase CRUD with no mock data, and includes a tool-calling Claude AI assistant.</p>
@@ -644,7 +714,7 @@
         </div>
       </article>
 
-      <article class="project-card">
+      <article class="project-card reveal-fade">
         <p class="card-tag">RAG · Python</p>
         <h3>Multi-PDF Knowledge Base</h3>
         <p>A RAG pipeline that ingests multiple PDFs, chunks with overlap, embeds via OpenAI, and stores in FAISS for retrieval-augmented Q&amp;A through LangChain's RetrievalQA chain.</p>
@@ -660,7 +730,7 @@
         </div>
       </article>
 
-      <article class="project-card">
+      <article class="project-card reveal-fade">
         <p class="card-tag">Conversational AI · Python</p>
         <h3>Real Estate AI Chatbot</h3>
         <p>An LLM-driven lead-qualification chatbot that captures intent, budget, location, and timeline, adapting its question flow based on prior answers.</p>
@@ -685,7 +755,7 @@
     <p class="section-label">Stack</p>
     <h2>Stack</h2>
     <div class="stack-grid">
-      <div>
+      <div class="reveal">
         <p class="stack-group-label">AI / LLM</p>
         <div class="stack-items">
           <span class="stack-item">Claude API</span>
@@ -698,7 +768,7 @@
           <span class="stack-item">Vector Databases</span>
         </div>
       </div>
-      <div>
+      <div class="reveal">
         <p class="stack-group-label">Backend</p>
         <div class="stack-items">
           <span class="stack-item">Node.js</span>
@@ -713,7 +783,7 @@
           <span class="stack-item">Prisma</span>
         </div>
       </div>
-      <div>
+      <div class="reveal">
         <p class="stack-group-label">Frontend</p>
         <div class="stack-items">
           <span class="stack-item">Next.js 14</span>
@@ -724,7 +794,7 @@
           <span class="stack-item">TanStack Query</span>
         </div>
       </div>
-      <div>
+      <div class="reveal">
         <p class="stack-group-label">Infra</p>
         <div class="stack-items">
           <span class="stack-item">PostgreSQL</span>
@@ -746,7 +816,7 @@
   <div class="container">
     <p class="section-label">About</p>
     <h2>About</h2>
-    <div class="about-body">
+    <div class="about-body reveal">
       <p>I'm an AI Engineer based in Bangalore who designs and ships production AI products end-to-end. I've built and deployed two live AI SaaS platforms solo — AdPilot India and BOS SaaS — owning schema design, backend, frontend, and multi-cloud deployment. I came into AI engineering from digital marketing, which shapes how I build: I think about the user and the product before what's technically interesting. Open to AI Engineer, Generative AI Engineer, and AI Product Engineer roles, Bangalore or remote.</p>
     </div>
   </div>
@@ -758,7 +828,7 @@
     <p class="section-label">Contact</p>
     <h2>Get in touch</h2>
     <p class="contact-sub">Open to GenAI Engineer / AI Product Engineer / full-stack AI roles. Bangalore or remote.</p>
-    <div class="contact-list">
+    <div class="contact-list reveal">
       <div class="contact-row">
         <span class="contact-icon" aria-hidden="true">
           <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
@@ -817,6 +887,21 @@
   function closeMenu() {
     document.getElementById('mobile-menu').classList.remove('open');
     document.getElementById('hamburger-btn').setAttribute('aria-expanded', 'false');
+  }
+
+  var revealEls = document.querySelectorAll('.reveal, .reveal-fade');
+  if (!('IntersectionObserver' in window)) {
+    revealEls.forEach(function (el) { el.classList.add('in-view'); });
+  } else {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
   }
 </script>
 
